@@ -30,7 +30,7 @@ public class DBController {
 	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 */
-	public static void find() throws ClassNotFoundException, SQLException {
+	public static void allSearch() throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -93,7 +93,7 @@ public class DBController {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public static void findB() throws ClassNotFoundException, SQLException, IOException {
+	public static void syainSearch() throws ClassNotFoundException, SQLException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		// 検索ワード
@@ -173,7 +173,7 @@ public class DBController {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public static void findC(String deptId) throws ClassNotFoundException, SQLException, IOException {
+	public static void busyoSearch(String syainId) throws ClassNotFoundException, SQLException, IOException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -191,7 +191,7 @@ public class DBController {
 			preparedStatement = connection.prepareStatement(sql.toString());
 
 			// 検索条件となる値をバインド
-			preparedStatement.setInt(1, Integer.parseInt(deptId));
+			preparedStatement.setInt(1, Integer.parseInt(syainId));
 
 			// SQL文を実行
 			resultSet = preparedStatement.executeQuery();
@@ -228,13 +228,13 @@ public class DBController {
 				System.out.print(resultSet.getString("birthday"));
 				System.out.print("\t");
 
-				String deptIdString = resultSet.getString("dept_id");
-				int deptId2 = Integer.parseInt(deptIdString);
-				if (deptId2 == 1) {
+				String syainIdString = resultSet.getString("dept_id");
+				int syainId2 = Integer.parseInt(syainIdString);
+				if (syainId2 == 1) {
 					System.out.println("営業部");
-				} else if (deptId2 == 2) {
+				} else if (syainId2 == 2) {
 					System.out.println("経理部");
-				} else if (gender == 3) {
+				} else if (syainId2 == 3) {
 					System.out.println("総務部");
 
 				}
@@ -263,7 +263,7 @@ public class DBController {
 	 * @throws IOException             入力処理でエラーが発生した場合に送出
 	 * @throws ParseException 
 	 */
-	public static void insert(String empName, String gender, String birthday, String deptId)
+	public static void insert(String empName, String gender, String birthday, String syainId)
 			throws ClassNotFoundException, SQLException, IOException, ParseException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -279,7 +279,7 @@ public class DBController {
 			preparedStatement.setInt(2, Integer.parseInt(gender));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
-			preparedStatement.setInt(4, Integer.parseInt(deptId));
+			preparedStatement.setInt(4, Integer.parseInt(syainId));
 
 			// SQL文を実行
 			preparedStatement.executeUpdate();
@@ -325,14 +325,14 @@ public class DBController {
 
 			// 部署IDを入力
 			System.out.print("部署ID(1：営業部、2：経理部、3：総務部)：");
-			String deptId = br.readLine();
+			String syainId = br.readLine();
 
 			// 入力値をバインド
 			preparedStatement.setString(1, emp_name);
 			preparedStatement.setInt(2, Integer.parseInt(gender));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
-			preparedStatement.setInt(4, Integer.parseInt(deptId));
+			preparedStatement.setInt(4, Integer.parseInt(syainId));
 			preparedStatement.setInt(5, Integer.parseInt(empId));
 
 			// SQL文の実行(失敗時は戻り値0)

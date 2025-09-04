@@ -52,7 +52,7 @@ public class MainSystem {
 			switch (menuNo) {
 			case 1:
 				// 全件表示機能の呼出
-				DBController.find();
+				DBController.allSearch();
 				break;
 
 			case 2:
@@ -60,16 +60,16 @@ public class MainSystem {
 				System.out.print("社員名:");
 
 				// 検索機能の呼出
-				DBController.findB();
+				DBController.syainSearch();
 				break;
 
 			case 3:
 				// 検索する部署IDを入力
 				System.out.print("部署ID(1:営業部、2:経理部、3:総務部)を入力してください:");
-				String deptIdA = br.readLine();
+				String busyoId = br.readLine();
 
 				// 検索機能の呼出
-				DBController.findC(deptIdA);
+				DBController.busyoSearch(busyoId);
 				break;
 
 			case 4:
@@ -81,10 +81,10 @@ public class MainSystem {
 				System.out.print("生年月日(西暦年/月/日):");
 				String birthday = br.readLine();
 				System.out.print("部署ID(1:営業部、2:経理部、3:総務部):");
-				String deptIdB = br.readLine();
+				String busyoId2 = br.readLine();
 
 				// 登録機能の呼出
-				DBController.insert(emp_name, Seibetsu, birthday, deptIdB);
+				DBController.insert(emp_name, Seibetsu, birthday, busyoId2);
 				break;
 
 			case 5:
@@ -92,11 +92,11 @@ public class MainSystem {
 				System.out.print("更新する社員の社員IDを入力してください：");
 
 				// 更新する値を入力する
-				String empId_1 = br.readLine();
-				Integer.parseInt(empId_1);
+				String syainId = br.readLine();
+				Integer.parseInt(syainId);
 
 				// 更新機能の呼出
-				DBController.update(empId_1);
+				DBController.update(syainId);
 				System.out.println("社員情報を更新しました");
 
 				break;
