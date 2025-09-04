@@ -11,6 +11,7 @@ import java.sql.Types;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantSQL;
 
 /**
@@ -47,27 +48,27 @@ public class DBController {
 
 			//resultSetの結果Setがない場合はfalse
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println("該当者はいませんでした");
+				System.out.println(ConstantMsg.gaitouNasi);
 				return;
 			}
 
 			// レコードを出力
-			System.out.println("社員ID\t社員名\t性別\t生年月日\t部署名");
+			System.out.println(ConstantMsg.recordTitle);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString("emp_id") + "\t");
 				System.out.print(resultSet.getString("emp_name") + "\t");
 
 				int gender = Integer.parseInt(resultSet.getString("gender"));
 				if (gender == 0) {
-					System.out.print("回答なし" + "\t");
+					System.out.print(ConstantMsg.kaitouNasi + "\t");
 				} else if (gender == 1) {
-					System.out.print("男性" + "\t");
+					System.out.print(ConstantMsg.male + "\t");
 
 				} else if (gender == 2) {
-					System.out.print("女性" + "\t");
+					System.out.print(ConstantMsg.female + "\t");
 
 				} else if (gender == 9) {
-					System.out.print("その他" + "\t");
+					System.out.print(ConstantMsg.etc + "\t");
 
 				}
 
@@ -120,11 +121,11 @@ public class DBController {
 			// SQL文を実行
 			resultSet = preparedStatement.executeQuery();
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println("該当者はいませんでした");
+				System.out.println(ConstantMsg.gaitouNasi);
 				return;
 			}
 
-			System.out.println("社員ID\t社員名\t性別\t生年月日\t部署名");
+			System.out.println(ConstantMsg.recordTitle);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString("emp_id"));
 				System.out.print("\t");
@@ -135,15 +136,15 @@ public class DBController {
 				String genderString = resultSet.getString("gender");
 				int gender = Integer.parseInt(genderString);
 				if (gender == 0) {
-					System.out.print("回答なし");
+					System.out.print(ConstantMsg.kaitouNasi);
 				} else if (gender == 1) {
-					System.out.print("男性");
+					System.out.print(ConstantMsg.male);
 
 				} else if (gender == 2) {
-					System.out.print("女性");
+					System.out.print(ConstantMsg.female);
 
 				} else if (gender == 9) {
-					System.out.print("その他");
+					System.out.print(ConstantMsg.etc);
 
 				}
 
@@ -197,11 +198,11 @@ public class DBController {
 			resultSet = preparedStatement.executeQuery();
 
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println("該当者はいませんでした");
+				System.out.println(ConstantMsg.gaitouNasi);
 				return;
 			}
 
-			System.out.println("社員ID\t社員名\t性別\t生年月日\t部署名");
+			System.out.println(ConstantMsg.recordTitle);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString("emp_id"));
 				System.out.print("\t");
@@ -212,15 +213,15 @@ public class DBController {
 				String genderString = resultSet.getString("gender");
 				int gender = Integer.parseInt(genderString);
 				if (gender == 0) {
-					System.out.print("回答なし");
+					System.out.print(ConstantMsg.kaitouNasi);
 				} else if (gender == 1) {
-					System.out.print("男性");
+					System.out.print(ConstantMsg.male);
 
 				} else if (gender == 2) {
-					System.out.print("女性");
+					System.out.print(ConstantMsg.female);
 
 				} else if (gender == 9) {
-					System.out.print("その他");
+					System.out.print(ConstantMsg.etc);
 
 				}
 
@@ -231,11 +232,11 @@ public class DBController {
 				String syainIdString = resultSet.getString("dept_id");
 				int syainId2 = Integer.parseInt(syainIdString);
 				if (syainId2 == 1) {
-					System.out.println("営業部");
+					System.out.println(ConstantMsg.eigyoubu);
 				} else if (syainId2 == 2) {
-					System.out.println("経理部");
+					System.out.println(ConstantMsg.keiribu);
 				} else if (syainId2 == 3) {
-					System.out.println("総務部");
+					System.out.println(ConstantMsg.soumubu);
 
 				}
 			}
@@ -285,7 +286,7 @@ public class DBController {
 			preparedStatement.executeUpdate();
 
 			// 登録完了メッセージを出力
-			System.out.println("社員情報を登録しました");
+			System.out.println(ConstantMsg.syainTouroku);
 		} finally {
 			DBManager.close(preparedStatement);
 			DBManager.close(connection);
@@ -314,17 +315,17 @@ public class DBController {
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_UPDATE);
 
-			System.out.print("社員名：");
+			System.out.print(ConstantMsg.syainName);
 			String emp_name = br.readLine();
 			// 性別を入力
-			System.out.print("性別(0:回答しない, 1:男性, 2:女性, 9:その他):");
+			System.out.print(ConstantMsg.genderSelect2);
 			String gender = br.readLine();
 			// 誕生日を入力
-			System.out.print("生年月日(西暦年/月/日)：");
+			System.out.print(ConstantMsg.birthday);
 			String birthday = br.readLine();
 
 			// 部署IDを入力
-			System.out.print("部署ID(1：営業部、2：経理部、3：総務部)：");
+			System.out.print(ConstantMsg.busyoSelect);
 			String syainId = br.readLine();
 
 			// 入力値をバインド
@@ -372,7 +373,7 @@ public class DBController {
 			// SQL文の実行(失敗時は戻り値0)
 			preparedStatement.executeUpdate();
 
-			System.out.println("社員情報を削除しました");
+			System.out.println(ConstantMsg.syainDelete);
 
 		} catch (Exception e) {
 			e.printStackTrace();
