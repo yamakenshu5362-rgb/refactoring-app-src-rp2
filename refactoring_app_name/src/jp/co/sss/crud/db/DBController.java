@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantSQL;
+import jp.co.sss.crud.util.ConstantValue;
 
 /**
  * DB操作処理用のクラス
@@ -55,25 +56,25 @@ public class DBController {
 			// レコードを出力
 			System.out.println(ConstantMsg.recordTitle);
 			while (resultSet.next()) {
-				System.out.print(resultSet.getString("emp_id") + "\t");
-				System.out.print(resultSet.getString("emp_name") + "\t");
+				System.out.print(resultSet.getString(ConstantMsg.alEmpId) + ConstantMsg.tab);
+				System.out.print(resultSet.getString(ConstantMsg.alEmpName) + ConstantMsg.tab);
 
-				int gender = Integer.parseInt(resultSet.getString("gender"));
-				if (gender == 0) {
-					System.out.print(ConstantMsg.kaitouNasi + "\t");
-				} else if (gender == 1) {
-					System.out.print(ConstantMsg.male + "\t");
+				int gender = Integer.parseInt(resultSet.getString(ConstantMsg.alGender));
+				if (gender == ConstantValue.zero) {
+					System.out.print(ConstantMsg.kaitouNasi + ConstantMsg.tab);
+				} else if (gender == ConstantValue.one) {
+					System.out.print(ConstantMsg.male + ConstantMsg.tab);
 
-				} else if (gender == 2) {
-					System.out.print(ConstantMsg.female + "\t");
+				} else if (gender == ConstantValue.two) {
+					System.out.print(ConstantMsg.female + ConstantMsg.tab);
 
-				} else if (gender == 9) {
-					System.out.print(ConstantMsg.etc + "\t");
+				} else if (gender == ConstantValue.nine) {
+					System.out.print(ConstantMsg.etc + ConstantMsg.tab);
 
 				}
 
-				System.out.print(resultSet.getString("birthday") + "\t");
-				System.out.println(resultSet.getString("dept_name"));
+				System.out.print(resultSet.getString(ConstantMsg.alBirthday) + ConstantMsg.tab);
+				System.out.println(resultSet.getString(ConstantMsg.alDeptName));
 			}
 
 			System.out.println("");
@@ -116,7 +117,7 @@ public class DBController {
 			preparedStatement = connection.prepareStatement(sql.toString());
 
 			// 検索条件となる値をバインド
-			preparedStatement.setString(1, "%" + searchWord + "%");
+			preparedStatement.setString(1, ConstantMsg.parsent + searchWord + ConstantMsg.parsent);
 
 			// SQL文を実行
 			resultSet = preparedStatement.executeQuery();
@@ -127,32 +128,32 @@ public class DBController {
 
 			System.out.println(ConstantMsg.recordTitle);
 			while (resultSet.next()) {
-				System.out.print(resultSet.getString("emp_id"));
-				System.out.print("\t");
+				System.out.print(resultSet.getString(ConstantMsg.alEmpId));
+				System.out.print(ConstantMsg.tab);
 
-				System.out.print(resultSet.getString("emp_name"));
-				System.out.print("\t");
+				System.out.print(resultSet.getString(ConstantMsg.alEmpName));
+				System.out.print(ConstantMsg.tab);
 
-				String genderString = resultSet.getString("gender");
+				String genderString = resultSet.getString(ConstantMsg.alGender);
 				int gender = Integer.parseInt(genderString);
-				if (gender == 0) {
+				if (gender == ConstantValue.zero) {
 					System.out.print(ConstantMsg.kaitouNasi);
-				} else if (gender == 1) {
+				} else if (gender == ConstantValue.one) {
 					System.out.print(ConstantMsg.male);
 
-				} else if (gender == 2) {
+				} else if (gender == ConstantValue.two) {
 					System.out.print(ConstantMsg.female);
 
-				} else if (gender == 9) {
+				} else if (gender == ConstantValue.nine) {
 					System.out.print(ConstantMsg.etc);
 
 				}
 
-				System.out.print("\t");
-				System.out.print(resultSet.getString("birthday"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.tab);
+				System.out.print(resultSet.getString(ConstantMsg.alBirthday));
+				System.out.print(ConstantMsg.tab);
 
-				System.out.println(resultSet.getString("dept_name"));
+				System.out.println(resultSet.getString(ConstantMsg.alDeptName));
 			}
 
 			System.out.println("");
@@ -204,38 +205,38 @@ public class DBController {
 
 			System.out.println(ConstantMsg.recordTitle);
 			while (resultSet.next()) {
-				System.out.print(resultSet.getString("emp_id"));
-				System.out.print("\t");
+				System.out.print(resultSet.getString(ConstantMsg.alEmpId));
+				System.out.print(ConstantMsg.tab);
 
-				System.out.print(resultSet.getString("emp_name"));
-				System.out.print("\t");
+				System.out.print(resultSet.getString(ConstantMsg.alEmpName));
+				System.out.print(ConstantMsg.tab);
 
-				String genderString = resultSet.getString("gender");
+				String genderString = resultSet.getString(ConstantMsg.alGender);
 				int gender = Integer.parseInt(genderString);
-				if (gender == 0) {
+				if (gender == ConstantValue.zero) {
 					System.out.print(ConstantMsg.kaitouNasi);
-				} else if (gender == 1) {
+				} else if (gender == ConstantValue.one) {
 					System.out.print(ConstantMsg.male);
 
-				} else if (gender == 2) {
+				} else if (gender == ConstantValue.two) {
 					System.out.print(ConstantMsg.female);
 
-				} else if (gender == 9) {
+				} else if (gender == ConstantValue.nine) {
 					System.out.print(ConstantMsg.etc);
 
 				}
 
-				System.out.print("\t");
-				System.out.print(resultSet.getString("birthday"));
-				System.out.print("\t");
+				System.out.print(ConstantMsg.tab);
+				System.out.print(resultSet.getString(ConstantMsg.alBirthday));
+				System.out.print(ConstantMsg.tab);
 
-				String syainIdString = resultSet.getString("dept_id");
+				String syainIdString = resultSet.getString(ConstantMsg.alEmpId);
 				int syainId2 = Integer.parseInt(syainIdString);
-				if (syainId2 == 1) {
+				if (syainId2 == ConstantValue.one) {
 					System.out.println(ConstantMsg.eigyoubu);
-				} else if (syainId2 == 2) {
+				} else if (syainId2 == ConstantValue.two) {
 					System.out.println(ConstantMsg.keiribu);
-				} else if (syainId2 == 3) {
+				} else if (syainId2 == ConstantValue.three) {
 					System.out.println(ConstantMsg.soumubu);
 
 				}
@@ -276,11 +277,11 @@ public class DBController {
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_INSERT);
 
 			// 入力値をバインド
-			preparedStatement.setString(1, empName);
-			preparedStatement.setInt(2, Integer.parseInt(gender));
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
-			preparedStatement.setInt(4, Integer.parseInt(syainId));
+			preparedStatement.setString(ConstantValue.one, empName);
+			preparedStatement.setInt(ConstantValue.two, Integer.parseInt(gender));
+			SimpleDateFormat sdf = new SimpleDateFormat(ConstantMsg.formatDate);
+			preparedStatement.setObject(ConstantValue.three, sdf.parse(birthday), Types.DATE);
+			preparedStatement.setInt(ConstantValue.four, Integer.parseInt(syainId));
 
 			// SQL文を実行
 			preparedStatement.executeUpdate();
@@ -318,7 +319,7 @@ public class DBController {
 			System.out.print(ConstantMsg.syainName);
 			String emp_name = br.readLine();
 			// 性別を入力
-			System.out.print(ConstantMsg.genderSelect2);
+			System.out.print(ConstantMsg.genderSelect);
 			String gender = br.readLine();
 			// 誕生日を入力
 			System.out.print(ConstantMsg.birthday);
@@ -329,12 +330,12 @@ public class DBController {
 			String syainId = br.readLine();
 
 			// 入力値をバインド
-			preparedStatement.setString(1, emp_name);
-			preparedStatement.setInt(2, Integer.parseInt(gender));
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
-			preparedStatement.setInt(4, Integer.parseInt(syainId));
-			preparedStatement.setInt(5, Integer.parseInt(empId));
+			preparedStatement.setString(ConstantValue.one, emp_name);
+			preparedStatement.setInt(ConstantValue.two, Integer.parseInt(gender));
+			SimpleDateFormat sdf = new SimpleDateFormat(ConstantMsg.formatDate);
+			preparedStatement.setObject(ConstantValue.three, sdf.parse(birthday), Types.DATE);
+			preparedStatement.setInt(ConstantValue.four, Integer.parseInt(syainId));
+			preparedStatement.setInt(ConstantValue.five, Integer.parseInt(empId));
 
 			// SQL文の実行(失敗時は戻り値0)
 			preparedStatement.executeUpdate();

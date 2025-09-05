@@ -19,7 +19,7 @@ public class ConstantMsg {
 	
 	public  static final String syainName       = "社員名:";
 	public  static final String busyoSelect     = "部署ID(1:営業部、2:経理部、3:総務部)を入力してください:";
-	public  static final String genderSelect    = "性別(0:その他, 1:男性, 2:女性, 9:回答なし):";
+	public  static final String genderSelect    = "性別(0:回答しない, 1:男性, 2:女性, 9:その他):";
 	public  static final String birthday        = "生年月日(西暦年/月/日):";
 	public  static final String syainIdIrai     = "更新する社員の社員IDを入力してください：";
 	public  static final String syainDataUpdate = "社員情報を更新しました";
@@ -36,7 +36,14 @@ public class ConstantMsg {
 	public  static final String keiribu          = "経理部";
 	public  static final String soumubu          = "総務部";
 	public  static final String syainTouroku     = "社員情報を登録しました";
-	public  static final String genderSelect2    = "性別(0:回答しない, 1:男性, 2:女性, 9:その他):";
 	public  static final String syainDelete      = "社員情報を削除しました";
 	
+	public  static final String tab               = "\t";
+	public  static final String alEmpId           = "emp_id";
+	public  static final String alEmpName         = "emp_name";
+	public  static final String alGender          = "gender";
+	public  static final String alBirthday        = "birthday";
+	public  static final String alDeptName        = "dept_name";
+	public  static final String parsent           = "%";
+	public  static final String formatDate        = "yyyy/MM/dd";
 }
