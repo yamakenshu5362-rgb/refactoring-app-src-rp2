@@ -46,4 +46,7 @@ public class ConstantMsg {
 	public  static final String alDeptName        = "dept_name";
 	public  static final String parsent           = "%";
 	public  static final String formatDate        = "yyyy/MM/dd";
+
+	public  static final String MSG_SYSTEM_ERROR = "継続不能なエラーが発生しました。";
+
 }

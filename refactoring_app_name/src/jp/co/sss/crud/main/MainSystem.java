@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.service.EmployeeAllFindService;
 import jp.co.sss.crud.service.EmployeeDeleteService;
 import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
@@ -64,10 +65,18 @@ public class MainSystem {
 			// 機能の呼出
 			switch (menuNo) {
 			case ConstantValue.one:
-				// 全件表示機能の呼出
-//				DBController.allSearch();
-				eafService.allSearch();
-				break;
+				
+				try {
+					// 全件表示機能の呼出
+//					DBController.allSearch();
+					eafService.allSearch();
+					break;
+
+				}catch (SystemErrorException e) {
+					System.out.println(e.getMessage()); 
+					e.printStackTrace(); 
+					break; 
+				}
 
 			case ConstantValue.two:
 				// 社員名検索
@@ -75,7 +84,13 @@ public class MainSystem {
 
 				// 検索機能の呼出
 //				DBController.syainSearch();
-				efenService.syainSearch();
+				try {
+					efenService.syainSearch();
+				}catch (SystemErrorException e) {
+					System.out.println(e.getMessage()); 
+					e.printStackTrace(); 
+					break; 
+				}
 				break;
 
 			case ConstantValue.three:

@@ -6,11 +6,12 @@ import java.util.List;
 
 import jp.co.sss.crud.db.IEmployeeDAO;
 import jp.co.sss.crud.dto.Employee;
+import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.util.ConstantMsg;
 
 public class EmployeeFindByDeptIdService {
 	
-	public void busyoSearch(String empId) {
+	public void busyoSearch(String empId) throws SystemErrorException {
 		
 		ConstantMsg c = new ConstantMsg();
 		IEmployeeDAO employeeDAO = new IEmployeeDAO();
@@ -26,9 +27,8 @@ public class EmployeeFindByDeptIdService {
 				System.out.println(e.getDeptName());
 			}
 			
-		} catch (ClassNotFoundException | SQLException | IOException e) {
-			
-			e.printStackTrace();
+		} catch (ClassNotFoundException | SQLException | IOException e1) {
+			throw new SystemErrorException(ConstantMsg.MSG_SYSTEM_ERROR);
 		}
 		
 		

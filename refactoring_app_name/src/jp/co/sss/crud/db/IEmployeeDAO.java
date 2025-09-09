@@ -72,6 +72,8 @@ public class IEmployeeDAO {
 			DBManager.close(connection);
 		}
 	}
+	
+	
 
 	/**
 	 * 社員名に該当する社員情報を検索

@@ -5,11 +5,14 @@ import java.util.List;
 
 import jp.co.sss.crud.db.IEmployeeDAO;
 import jp.co.sss.crud.dto.Employee;
+import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.util.ConstantMsg;
 
 public class EmployeeAllFindService {
 
-	public void allSearch(){
+
+
+	public void allSearch() throws SystemErrorException{
 		
 		ConstantMsg c = new ConstantMsg();
 		IEmployeeDAO employeeDAO = new IEmployeeDAO();
@@ -25,7 +28,7 @@ public class EmployeeAllFindService {
 			}
 			
 		} catch (ClassNotFoundException | SQLException e1) {
-			e1.printStackTrace();
+			throw new SystemErrorException(ConstantMsg.MSG_SYSTEM_ERROR);
 		}
 		
 	}
