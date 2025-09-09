@@ -6,11 +6,12 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import jp.co.sss.crud.db.DBController;
 import jp.co.sss.crud.service.EmployeeAllFindService;
+import jp.co.sss.crud.service.EmployeeDeleteService;
 import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
 import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
 import jp.co.sss.crud.service.EmployeeRegisterService;
+import jp.co.sss.crud.service.EmployeeUpdateService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -39,6 +40,8 @@ public class MainSystem {
 		EmployeeFindByEmpNameService efenService = new EmployeeFindByEmpNameService();
 		EmployeeFindByDeptIdService efbdIService = new EmployeeFindByDeptIdService();
 		EmployeeRegisterService erService = new EmployeeRegisterService();
+		EmployeeUpdateService euService = new EmployeeUpdateService();
+		EmployeeDeleteService edService = new EmployeeDeleteService();
 		
 		int menuNo = ConstantValue.zero;
 
@@ -110,7 +113,8 @@ public class MainSystem {
 				Integer.parseInt(syainId);
 
 				// 更新機能の呼出
-				DBController.update(syainId);
+//				DBController.update(syainId);
+				euService.update(syainId);
 				System.out.println(ConstantMsg.syainDataUpdate);
 
 				break;
@@ -120,7 +124,8 @@ public class MainSystem {
 				System.out.print(ConstantMsg.syainDeleteIrai);
 
 				// 削除機能の呼出
-				DBController.delete();
+//				DBController.delete();
+				edService.delete();
 				break;
 
 			}
