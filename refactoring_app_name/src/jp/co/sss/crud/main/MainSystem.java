@@ -8,6 +8,9 @@ import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
 import jp.co.sss.crud.service.EmployeeAllFindService;
+import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
+import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
+import jp.co.sss.crud.service.EmployeeRegisterService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -33,7 +36,10 @@ public class MainSystem {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException, ParseException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		EmployeeAllFindService eafService = new EmployeeAllFindService();
-
+		EmployeeFindByEmpNameService efenService = new EmployeeFindByEmpNameService();
+		EmployeeFindByDeptIdService efbdIService = new EmployeeFindByDeptIdService();
+		EmployeeRegisterService erService = new EmployeeRegisterService();
+		
 		int menuNo = ConstantValue.zero;
 
 		do {
@@ -65,7 +71,8 @@ public class MainSystem {
 				System.out.print(ConstantMsg.syainName);
 
 				// 検索機能の呼出
-				DBController.syainSearch();
+//				DBController.syainSearch();
+				efenService.syainSearch();
 				break;
 
 			case ConstantValue.three:
@@ -74,7 +81,8 @@ public class MainSystem {
 				String busyoId = br.readLine();
 
 				// 検索機能の呼出
-				DBController.busyoSearch(busyoId);
+//				DBController.busyoSearch(busyoId);
+				efbdIService.busyoSearch(busyoId);
 				break;
 
 			case ConstantValue.four:
@@ -89,7 +97,8 @@ public class MainSystem {
 				String busyoId2 = br.readLine();
 
 				// 登録機能の呼出
-				DBController.insert(emp_name, Seibetsu, birthday, busyoId2);
+//				DBController.insert(emp_name, Seibetsu, birthday, busyoId2);
+				erService.insert(emp_name, Seibetsu, birthday, busyoId2);
 				break;
 
 			case ConstantValue.five:

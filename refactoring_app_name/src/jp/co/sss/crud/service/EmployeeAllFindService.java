@@ -15,8 +15,8 @@ public class EmployeeAllFindService {
 		IEmployeeDAO employeeDAO = new IEmployeeDAO();
 
 		try {
-			List<Employee> allsearchAns =  employeeDAO.allSearch();
-			for(Employee e:allsearchAns) {
+			List<Employee> allSearchAns =  employeeDAO.allSearch();
+			for(Employee e:allSearchAns) {
 				System.out.print(e.getEmpId() + c.tab);
 				System.out.print(e.getEmpName() + c.tab);
 				System.out.print(e.getGender() + c.tab);

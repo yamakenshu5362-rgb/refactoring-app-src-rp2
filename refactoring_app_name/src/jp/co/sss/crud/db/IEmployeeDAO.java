@@ -80,7 +80,7 @@ public class IEmployeeDAO {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public static List<Employee> syainSearch() throws ClassNotFoundException, SQLException, IOException {
+	public List<Employee> syainSearch() throws ClassNotFoundException, SQLException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		// 検索ワード
@@ -145,7 +145,7 @@ public class IEmployeeDAO {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public static List<Employee> busyoSearch(String syainId) throws ClassNotFoundException, SQLException, IOException {
+	public List<Employee> busyoSearch(String syainId) throws ClassNotFoundException, SQLException, IOException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -212,7 +212,7 @@ public class IEmployeeDAO {
 	 * @throws IOException             入力処理でエラーが発生した場合に送出
 	 * @throws ParseException 
 	 */
-	public static void insert(String empName, String gender, String birthday, String syainId)
+	public void insert(String empName, String gender, String birthday, String syainId)
 			throws ClassNotFoundException, SQLException, IOException, ParseException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
