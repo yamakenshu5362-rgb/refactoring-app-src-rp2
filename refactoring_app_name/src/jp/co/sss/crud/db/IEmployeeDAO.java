@@ -24,7 +24,7 @@ public class IEmployeeDAO {
 	/**
 	 * 全ての社員情報を検索
 	 */
-	public static List<Employee> allSearch() throws ClassNotFoundException, SQLException {
+	public List<Employee> allSearch() throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -262,7 +262,6 @@ public class IEmployeeDAO {
 
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_UPDATE);
-
 			System.out.print(ConstantMsg.syainName);
 			String emp_name = br.readLine();
 			// 性別を入力
@@ -271,7 +270,6 @@ public class IEmployeeDAO {
 			// 誕生日を入力
 			System.out.print(ConstantMsg.birthday);
 			String birthday = br.readLine();
-
 			// 部署IDを入力
 			System.out.print(ConstantMsg.busyoSelect);
 			String syainId = br.readLine();

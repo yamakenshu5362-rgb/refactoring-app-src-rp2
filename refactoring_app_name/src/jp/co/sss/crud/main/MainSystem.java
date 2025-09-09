@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
+import jp.co.sss.crud.service.EmployeeAllFindService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -31,6 +32,7 @@ public class MainSystem {
 	 */
 	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException, ParseException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		EmployeeAllFindService eafService = new EmployeeAllFindService();
 
 		int menuNo = ConstantValue.zero;
 
@@ -54,7 +56,8 @@ public class MainSystem {
 			switch (menuNo) {
 			case ConstantValue.one:
 				// 全件表示機能の呼出
-				DBController.allSearch();
+//				DBController.allSearch();
+				eafService.allSearch();
 				break;
 
 			case ConstantValue.two:
