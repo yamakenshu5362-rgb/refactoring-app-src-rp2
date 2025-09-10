@@ -55,6 +55,7 @@ public class MainSystem {
 		EmployeeGenderReader egReader = new EmployeeGenderReader();
 		
 		
+		
 		int menuNo = ConstantValue.zero;
 
 		do {
@@ -149,16 +150,14 @@ public class MainSystem {
 				String busyoId2 = br.readLine();
 
 				try {
-					if(enReader.isValid()) {
-						
-					}
+					
 					// 登録機能の呼出
 					erService.insert(emp_name, Seibetsu, birthday, busyoId2);
 					break;
-				} catch (IllegalInputException e) {
-					System.out.println(e.getMessage());
-					e.printStackTrace();
-					continue;
+//				} catch (IllegalInputException e) {
+//					System.out.println(e.getMessage());
+//					e.printStackTrace();
+//					continue;
 				}catch (SystemErrorException e) {
 					System.out.println(e.getMessage()); 
 					e.printStackTrace(); 
