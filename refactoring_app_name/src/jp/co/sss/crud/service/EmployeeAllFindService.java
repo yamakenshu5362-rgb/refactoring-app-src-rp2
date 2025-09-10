@@ -3,7 +3,7 @@ package jp.co.sss.crud.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import jp.co.sss.crud.db.IEmployeeDAO;
+import jp.co.sss.crud.db.EmployeeDAO;
 import jp.co.sss.crud.dto.Employee;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.util.ConstantMsg;
@@ -15,7 +15,7 @@ public class EmployeeAllFindService {
 	public void allSearch() throws SystemErrorException{
 		
 		ConstantMsg c = new ConstantMsg();
-		IEmployeeDAO employeeDAO = new IEmployeeDAO();
+		EmployeeDAO employeeDAO = new EmployeeDAO();
 
 		try {
 			List<Employee> allSearchAns =  employeeDAO.allSearch();

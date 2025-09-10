@@ -48,5 +48,10 @@ public class ConstantMsg {
 	public  static final String formatDate        = "yyyy/MM/dd";
 
 	public  static final String MSG_SYSTEM_ERROR = "継続不能なエラーが発生しました。";
+	
+	public  static final String MENU_NO_ERROR = "1～7までの整数を入力してください";
+	public  static final String SYAIN_NAME_LENGTH_ERROR = "1文字以上30文字以下の文字列を入力してください";
+	public  static final String SYAIN_DEPTID_RANGE_ERROR = "1以上3以下の整数を入力してください";
+
 
 }
