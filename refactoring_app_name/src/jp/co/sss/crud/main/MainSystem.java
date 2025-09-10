@@ -86,12 +86,13 @@ public class MainSystem {
 //				DBController.syainSearch();
 				try {
 					efenService.syainSearch();
+					break;
 				}catch (SystemErrorException e) {
 					System.out.println(e.getMessage()); 
 					e.printStackTrace(); 
 					break; 
 				}
-				break;
+
 
 			case ConstantValue.three:
 				// 検索する部署IDを入力
@@ -100,8 +101,15 @@ public class MainSystem {
 
 				// 検索機能の呼出
 //				DBController.busyoSearch(busyoId);
-				efbdIService.busyoSearch(busyoId);
-				break;
+				try {
+					efbdIService.busyoSearch(busyoId);
+					break;
+				}catch (SystemErrorException e) {
+					System.out.println(e.getMessage()); 
+					e.printStackTrace(); 
+					break; 
+				}
+				
 
 			case ConstantValue.four:
 				// 登録する値を入力
@@ -114,12 +122,21 @@ public class MainSystem {
 				System.out.print(ConstantMsg.busyoSelect);
 				String busyoId2 = br.readLine();
 
-				// 登録機能の呼出
-//				DBController.insert(emp_name, Seibetsu, birthday, busyoId2);
-				erService.insert(emp_name, Seibetsu, birthday, busyoId2);
-				break;
+				try {
+					// 登録機能の呼出
+//					DBController.insert(emp_name, Seibetsu, birthday, busyoId2);
+					erService.insert(emp_name, Seibetsu, birthday, busyoId2);
+					break;
+				}catch (SystemErrorException e) {
+					System.out.println(e.getMessage()); 
+					e.printStackTrace(); 
+					break; 
+				}
+			
 
 			case ConstantValue.five:
+			
+			try {
 				// 更新する社員IDを入力
 				System.out.print(ConstantMsg.syainIdIrai);
 
@@ -133,15 +150,28 @@ public class MainSystem {
 				System.out.println(ConstantMsg.syainDataUpdate);
 
 				break;
+				
+			}catch (SystemErrorException e) {
+				System.out.println(e.getMessage()); 
+				e.printStackTrace(); 
+				break; 
+			}
 
 			case ConstantValue.six:
-				// 削除する社員IDを入力
-				System.out.print(ConstantMsg.syainDeleteIrai);
-
-				// 削除機能の呼出
-//				DBController.delete();
-				edService.delete();
-				break;
+				
+				try {
+					// 削除する社員IDを入力
+					System.out.print(ConstantMsg.syainDeleteIrai);
+	
+					// 削除機能の呼出
+//					DBController.delete();
+					edService.delete();
+					break;
+				}catch (SystemErrorException e) {
+					System.out.println(e.getMessage()); 
+					e.printStackTrace(); 
+					break; 
+				}
 
 			}
 		} while (menuNo != ConstantValue.seven);

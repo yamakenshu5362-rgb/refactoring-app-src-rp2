@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.sss.crud.dto.Employee;
+import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantSQL;
 import jp.co.sss.crud.util.ConstantValue;
@@ -297,12 +298,13 @@ public class IEmployeeDAO {
 
 	/**
 	 * 社員情報を1件削除
+	 * @throws Exception 
 	 *
 	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public void delete() {
+	public void delete() throws Exception {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -324,7 +326,7 @@ public class IEmployeeDAO {
 			System.out.println(ConstantMsg.syainDelete);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new SystemErrorException(ConstantMsg.MSG_SYSTEM_ERROR);
 
 		}
 
